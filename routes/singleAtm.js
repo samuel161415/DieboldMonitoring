@@ -15,7 +15,7 @@ router.post('/singleAtm',(req,res)=>{
         'hoper1','hoper2','hoper3','hoper4','receit_printer'
     ]
 
-    const fitness_error=['Fitness Ok','Fitness Routine Error','Fitness Warning','Fitness Suspended','Fatal Error']
+    const fitness_error=['Ok','Routine Error','Warning','Suspended','Fatal Error']
     const supply_error=['Unchanged','Good','Low','Out','Overfill','High']
     const sensor_error=['None','Good','Inactive']
 

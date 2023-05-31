@@ -21,6 +21,8 @@ connectDB()
   const hardware=require('./routes/hardware')
   const singleAtm=require('./routes/singleAtm')
   const user=require('./routes/user')
+  const reports=require('./routes/atmReports')
+  const offline=require('./routes/offline')
   // getData()
    setInterval(insertData,10000)
   
@@ -28,6 +30,8 @@ connectDB()
  app.use('/api',hardware) 
  app.use('/api',singleAtm)
  app.use('/api',user)
+ app.use('/api',reports)
+ app.use('/api',offline)
 
   app.listen(process.env.PORT||5000,()=>{
   console.log('app is listning');

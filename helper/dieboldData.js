@@ -8,7 +8,7 @@
            
             atmFilter(atms,result,atmIds)
             const {hardware_categories,cashout_categories,inservice_categories}=category(atmIds,result)
-  
+             
            const data=await getData()
            var objResult={
             categories:{
@@ -21,16 +21,39 @@
                result:result
            }
            //checking if the previous state is changed and if it does insert new data to database else leave
-           if (JSON.stringify(data.result)!==JSON.stringify(result)){
+           if (JSON.stringify(data&&data.result)!==JSON.stringify(result)){
             const newData=new Diebold_data(objResult)
             
             try{
                const savedDiebold=await newData.save();
+              
              
             }
             catch(err){
               console.log('error : ',err);
             }
+           }
+           else{
+            const ctime=new Date()
+            
+           
+             const cData=getData()
+             let id=cData.id
+             const updated=await Diebold_data.updateOne(
+              { _id: id },
+              { $set:
+              {
+                updatedAt:ctime
+              } },
+              {upsert:true} // used to insert if the object not found
+           )
+          // const update=await Diebold_data.findByIdAndUpdate({"_id":id},{
+          //   $set:{
+          //     updatedAt:ctime
+          //   }},
+          //   {upsert:true}
+          // )
+          
            }
           }
          const getData=async()=>{

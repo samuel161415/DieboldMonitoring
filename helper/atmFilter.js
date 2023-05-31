@@ -12,10 +12,11 @@ const atmFilter=(atms,result,atmIds)=>{
             if(val.sensor)
             sensor+=val.sensor_array[i]
            }
-           if(i===0||i===1||i===2||i===3||i===4||i===5||i===15||i===20){
+           if(i===0||i===1||i===6||i===7||i===8||i===9||i===15){
             supply+=val.supply_array[i]
            }
         }
+        
     
         atmIds.push(val.term_id)
         result[val.term_id]={
